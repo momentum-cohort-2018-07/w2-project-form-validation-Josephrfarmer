@@ -2,7 +2,7 @@ document.getElementById('parking-form').addEventListener('submit', function (eve
     event.preventDefault()
 
     var inputFields = document.getElementsByTagName('input')
-
+    // var label = documemt.querySelectorAll('label')
 
     for (var i = 0; i < inputFields.length; i++) {
         inputFields[i].parentElement.classList.remove("input-invalid", "input-valid")
@@ -14,7 +14,10 @@ document.getElementById('parking-form').addEventListener('submit', function (eve
 
 
     for (var i = 0; i < inputFields.length; i++) {
-
+        // for(var j=0; j<label.length; j++){
+        //     var labelText = label.innerText
+        // }   
+        
         // debugger
 
         if (inputFields[i].value.trim() === '') {
@@ -38,7 +41,12 @@ document.getElementById('parking-form').addEventListener('submit', function (eve
         var errorMessageDiv = document.createElement('div')
         errorMessageDiv.classList.add('errorMessage')
         errorMessageDiv.innerText = 'is required'
-        input.parentElement.appendChild(errorMessageDiv)
+        if(input.id.startsWith('car')){
+        input.parentElement.parentElement.appendChild(errorMessageDiv)
+        }else{
+            input.parentElement.appendChild(errorMessageDiv)
+        }
+
     }
 
     
